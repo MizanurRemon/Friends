@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 
 import com.example.friends.Adapter.Friends_adapter;
 import com.example.friends.Model.Friends_list_response;
 import com.example.friends.Model.Friends_response;
 import com.example.friends.R;
+import com.example.friends.Session.Session_Management;
 import com.example.friends.ViewModel.Friends_ViewModel;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Home_fragment extends Fragment implements Friends_adapter.OnItemClickListener {
 
@@ -30,6 +30,7 @@ public class Home_fragment extends Fragment implements Friends_adapter.OnItemCli
     String result = "10";
     private Friends_list_response friendList;
     private Friends_adapter adapter;
+    Session_Management session_management;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -85,6 +86,9 @@ public class Home_fragment extends Fragment implements Friends_adapter.OnItemCli
         String image = response.getPicture().getLarge();
         String street = streetNumber + ", " + streetName;
 
+
+        session_management = new Session_Management(getActivity());
+        session_management.saveSession(fullName, image, street, city, state, country, email, cell, phone);
 
         getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
                 R.anim.slide_in,  // enter

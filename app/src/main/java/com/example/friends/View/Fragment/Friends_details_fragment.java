@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.friends.R;
+import com.example.friends.Session.Session_Management;
 import com.squareup.picasso.Picasso;
 
 
@@ -25,6 +26,7 @@ public class Friends_details_fragment extends Fragment {
     TextView nameText, streetText, cityText, stateText, countryText, emailText, cellText, phoneText;
 
     String name, image, street, city, state, country, email, cell, phone;
+    Session_Management session_management;
 
     public Friends_details_fragment(String name, String image, String street, String city, String state, String country, String email, String cell, String phone) {
         this.name = name;
@@ -45,15 +47,27 @@ public class Friends_details_fragment extends Fragment {
     }
 
     private void main() {
-        nameText.setText(name);
-        Picasso.get().load(image).into(profileImage);
-        streetText.setText(street);
-        cityText.setText(city);
-        stateText.setText(state);
-        countryText.setText(country);
-        emailText.setText(email);
-        cellText.setText(cell);
-        phoneText.setText(phone);
+        try {
+            nameText.setText(name);
+            Picasso.get().load(image).into(profileImage);
+            streetText.setText(street);
+            cityText.setText(city);
+            stateText.setText(state);
+            countryText.setText(country);
+            emailText.setText(email);
+            cellText.setText(cell);
+            phoneText.setText(phone);
+        } catch (Exception e) {
+            nameText.setText(session_management.getName());
+            Picasso.get().load(session_management.getSESSION_IMAGE()).into(profileImage);
+            streetText.setText(session_management.getSESSION_STREET());
+            cityText.setText(session_management.getSESSION_CITY());
+            stateText.setText(session_management.getSESSION_STATE());
+            countryText.setText(session_management.getSESSION_COUNTRY());
+            emailText.setText(session_management.getSESSION_EMAIL());
+            cellText.setText(session_management.getSESSION_CELL());
+            phoneText.setText(session_management.getSESSION_PHONE());
+        }
     }
 
     @Override
@@ -89,7 +103,7 @@ public class Friends_details_fragment extends Fragment {
             public void onClick(View v) {
                 try {
 
-                    Intent intent = new Intent (Intent.ACTION_VIEW , Uri.parse("mailto:" + email));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:" + email));
                     startActivity(intent);
 
                 } catch (Exception e) {
@@ -100,6 +114,8 @@ public class Friends_details_fragment extends Fragment {
 
             }
         });
+
+        session_management = new Session_Management(getActivity());
 
         return view;
     }
