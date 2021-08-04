@@ -3,7 +3,15 @@ package com.example.friends.Model;
 public class Friends_response {
     private Friends_name_response name;
     private Friends_picture_response picture;
-    private String nat;
+    private Friends_location_response location;
+
+    public Friends_location_response getLocation() {
+        return location;
+    }
+
+    public void setLocation(Friends_location_response location) {
+        this.location = location;
+    }
 
     public Friends_name_response getName() {
         return name;
@@ -21,11 +29,4 @@ public class Friends_response {
         this.picture = picture;
     }
 
-    public String getNat() {
-        return nat;
-    }
-
-    public void setNat(String nat) {
-        this.nat = nat;
-    }
 }
