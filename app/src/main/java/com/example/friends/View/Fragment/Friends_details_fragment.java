@@ -18,17 +18,20 @@ import com.squareup.picasso.Picasso;
 public class Friends_details_fragment extends Fragment {
 
     ImageView backButton, profileImage;
-    TextView nameText, streetText, cityText, stateText, countryText;
+    TextView nameText, streetText, cityText, stateText, countryText, emailText, cellText, phoneText;
 
-    String name, image, street, city, state, country;
+    String name, image, street, city, state, country, email, cell, phone;
 
-    public Friends_details_fragment(String name, String image, String street, String city, String state, String country) {
+    public Friends_details_fragment(String name, String image, String street, String city, String state, String country, String email, String cell, String phone) {
         this.name = name;
         this.image = image;
         this.street = street;
         this.city = city;
         this.state = state;
         this.country = country;
+        this.email = email;
+        this.cell = cell;
+        this.phone = phone;
     }
 
     @Override
@@ -44,6 +47,9 @@ public class Friends_details_fragment extends Fragment {
         cityText.setText(city);
         stateText.setText(state);
         countryText.setText(country);
+        emailText.setText(email);
+        cellText.setText(cell);
+        phoneText.setText(phone);
     }
 
     @Override
@@ -70,7 +76,9 @@ public class Friends_details_fragment extends Fragment {
         cityText = (TextView) view.findViewById(R.id.cityTextID);
         stateText = (TextView) view.findViewById(R.id.stateTextID);
         countryText = (TextView) view.findViewById(R.id.countryTextID);
-
+        emailText = (TextView) view.findViewById(R.id.emailTextID);
+        cellText = (TextView) view.findViewById(R.id.cellTextID);
+        phoneText = (TextView) view.findViewById(R.id.phoneTextID);
 
         return view;
     }

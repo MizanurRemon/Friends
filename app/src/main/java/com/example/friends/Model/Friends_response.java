@@ -4,6 +4,34 @@ public class Friends_response {
     private Friends_name_response name;
     private Friends_picture_response picture;
     private Friends_location_response location;
+    String email;
+    String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCell() {
+        return cell;
+    }
+
+    public void setCell(String cell) {
+        this.cell = cell;
+    }
+
+    String cell;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Friends_location_response getLocation() {
         return location;

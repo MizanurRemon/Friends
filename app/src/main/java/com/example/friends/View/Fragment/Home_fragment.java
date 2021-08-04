@@ -77,6 +77,9 @@ public class Home_fragment extends Fragment implements Friends_adapter.OnItemCli
         String city = response.getLocation().getCity();
         String state = response.getLocation().getState();
         String country = response.getLocation().getCountry();
+        String email = response.getEmail();
+        String cell = response.getCell();
+        String phone = response.getPhone();
 
         String fullName = fName + " " + lName;
         String image = response.getPicture().getLarge();
@@ -88,6 +91,6 @@ public class Home_fragment extends Fragment implements Friends_adapter.OnItemCli
                 R.anim.fade_out,  // exit
                 R.anim.fade_in,   // popEnter
                 R.anim.slide_out  // popExit
-        ).replace(R.id.frame_container, new Friends_details_fragment(fullName, image, street, city, state, country)).addToBackStack(null).commit();
+        ).replace(R.id.frame_container, new Friends_details_fragment(fullName, image, street, city, state, country, email, cell, phone)).addToBackStack(null).commit();
     }
 }
